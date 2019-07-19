@@ -142,7 +142,6 @@
   在 `/etc/apt/sources.list` 中注释掉原有的 repo，加入阿里的镜像：
   
     deb https://mirrors.aliyun.com/raspbian/raspbian/ buster main contrib non-free rpi
-
     # deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
 
 
@@ -152,7 +151,6 @@
   编辑 `/boot/config.txt` 中加入以下两行：
  
     dtoverlay=pi3-disable-wifi
-
     dtoverlay=pi3-disable-bt
 
 # 参考文献
