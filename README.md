@@ -14,7 +14,7 @@
 # Extra
 
 ## 使用阿里镜像
-  在 /etc/apt/sources.list 中注释掉原有的 repo，加入阿里的镜像：
+  在 `/etc/apt/sources.list` 中注释掉原有的 repo，加入阿里的镜像：
   
     deb https://mirrors.aliyun.com/raspbian/raspbian/ buster main contrib non-free rpi
 
@@ -24,7 +24,7 @@
 ## 关闭蓝牙和 Wi-Fi
   如果只作为一个网关运行，可以关闭蓝牙和 Wi-Fi，省电的同时纯净无线空间。
   
-  编辑/boot 分区的 config.txt，加入以下两行：
+  编辑 `/boot` 分区的 `config.txt` 中加入以下两行：
  
     dtoverlay=pi3-disable-wifi
 
