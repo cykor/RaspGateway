@@ -27,7 +27,7 @@ Clash 配置文件的前半部分修改如下：
     allow-lan: true
     mode: Rule
     log-level: error
-    external-controller: 0.0.0.0:9090
+    external-controller: 0.0.0.0:配置端口
     secret: ""
     dns:
       enable: true
@@ -188,17 +188,17 @@ Clash 配置文件的前半部分修改如下：
     网关：固定IP
     DNS：固定IP
 
-* 作为代理
+- 作为代理
 
-** 作为 HTTP 代理
+  - 作为 HTTP 代理
 
-    固定IP:HTTP端口
+      固定IP:HTTP端口
 
-** 作为 SOCKS 代理
+  - 作为 SOCKS 代理
 
-    固定IP:SOCKS端口
+     固定IP:SOCKS端口
 
-* 访问配置界面
+- 访问配置界面
 在任何浏览器中打开：
 
     http://固定IP
