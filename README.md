@@ -192,11 +192,11 @@ Clash 配置文件的前半部分修改如下：
 
   - 作为 HTTP 代理
 
-      固定IP:HTTP端口
+         固定IP:HTTP端口
 
   - 作为 SOCKS 代理
 
-     固定IP:SOCKS端口
+        固定IP:SOCKS端口
 
 - 访问配置界面
 在任何浏览器中打开：
