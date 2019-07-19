@@ -2,6 +2,21 @@
   使用 Raspberry Pi 和 Clash 打造即插即用的透明网关/代理
 
 # 编译和准备 Clash
+## 交叉编译
+
+  Mac 或 Linux 上可以：
+  
+    go get -u -v github.com/Dreamacro/clash
+    cd ~/go/src/github.com/Dreamacro/clash
+    GOARCH=arm GOOS=linux GOARM=7 CGO_ENABLED=0 go build -ldflags '-w -s'
+ 
+ 编译的时候有个小陷阱，编译到 `go-shadowsocks2` 时会报 `undefined ... chacha20poly1305.NewX`。
+ 找到那个源文件把 `X` 删掉就好了。
+ 
+    scp clash pi@raspberrypi.local:
+    scp config.yaml pi@raspberrypi.local:
+    
+## 准备 Clash
 
 # 网络配置
 
