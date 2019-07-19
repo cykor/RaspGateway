@@ -222,7 +222,7 @@ Clash 配置文件的前半部分修改如下：
 
 # 感谢
   
-* [clash](https://github.com/Dreamacro/clash)
+* [Clash](https://github.com/Dreamacro/clash)
 * [yacd](https://github.com/haishanh/yacd)
 * [go-shadowsocks2](https://github.com/riobard/go-shadowsocks2)
 * [V2Ray](https://github.com/v2ray/v2ray-core)
