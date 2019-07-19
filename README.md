@@ -137,6 +137,7 @@ systemctl enable nginx
 
 # 参考文献
 
-[使用Debian9自己打造一个旁路由](https://lala.im/5727.html)
-[在树莓派上使用kone和clash](https://beyondkmp.com/post/kone_clash/)
+* [使用Debian9自己打造一个旁路由](https://lala.im/5727.html)
+
+* [在树莓派上使用kone和clash](https://beyondkmp.com/post/kone_clash/)
 
