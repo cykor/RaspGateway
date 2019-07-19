@@ -70,8 +70,49 @@
     systemctl enable supervisor
 
 
-
 # 使用 yacd 作为控制前端
+
+apt -y install git build-essential
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - 
+apt install nodejs 
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+apt update && sudo apt install yarn
+
+apt -y install nginx unzip
+mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
+
+git clone https://github.com/haishanh/yacd.git
+cd yacd
+
+nano src/ducks/app.js
+
+const defaultState = {
+  clashAPIConfig: {
+    hostname: '192.168.1.6’,
+    port: ‘9090’,
+    secret: ''
+  },
+
+yarn
+yarn build
+cp -r public/. /usr/share/nginx/html/yacd
+
+nano /etc/nginx/conf.d/yacd.conf
+
+server {
+    listen       80;
+    server_name  192.168.1.6;
+    root /usr/share/nginx/html/yacd;
+    index index.html;
+}
+
+systemctl start nginx
+systemctl enable nginx
+
+
 
 # 使用 Cron 自动更新和重启 Clash
 
@@ -93,4 +134,9 @@
     dtoverlay=pi3-disable-wifi
 
     dtoverlay=pi3-disable-bt
+
+# 参考文献
+
+[使用Debian9自己打造一个旁路由](https://lala.im/5727.html)
+[在树莓派上使用kone和clash](https://beyondkmp.com/post/kone_clash/)
 
