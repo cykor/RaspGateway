@@ -17,7 +17,30 @@
 
 
 # 编译和准备 Clash
+
 ## 准备配置文件
+Clash 配置文件的前半部分修改如下：
+
+    port: HTTP代理端口
+    socks-port: SOCKS代理端口
+    redir-port: 转发端口
+    allow-lan: true
+    mode: Rule
+    log-level: error
+    external-controller: 0.0.0.0:9090
+    secret: ""
+    dns:
+      enable: true
+      ipv6: false
+      listen: 0.0.0.0:53
+      enhanced-mode: fake-ip
+      nameserver:
+      - 223.5.5.5
+      - tls://dns.rubyfish.cn:853
+      - tls://1.1.1.1:853
+      - tls://dns.google
+      - tcp://1.1.1.1:53
+      - tcp://208.67.222.222:443
 
 
 ## 交叉编译 Clash
@@ -46,14 +69,15 @@
     chown root:root clash
     mkdir -p /opt/clash
     mv clash config.yaml /opt/clash/
-    
+
+
 # 网络配置
 
 编辑 `/etc/dhcpcd.conf`，固定 Raspberry Pi 的 IP：
 
     interface eth0
     static ip_address=固定IP/24
-    static routers=192.168.1.1
+    static routers=路由器IP
 
 打开转发：
 
@@ -64,7 +88,7 @@
 
     iptables -t nat -N Clash
     iptables -t nat -A Clash -d 192.168.0.0/16 -j RETURN
-    iptables -t nat -A Clash -p tcp -j REDIRECT --to-ports 29567
+    iptables -t nat -A Clash -p tcp -j REDIRECT --to-ports 转发端口
     iptables -t nat -A PREROUTING -p tcp -j Clash
     netfilter-persistent save
 
@@ -153,15 +177,25 @@
     45 3 * * 1 /usr/bin/wget 你的配置链接 -O /opt/clash/config.yaml
     50 3 * * * /usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf restart clash 
 
+
 # 使用方法
 
 * 作为网关
+将设备的 IP 设置改为手动，设置如下：
+
+    IP：随便，不冲突就行
+    网关：固定IP
+    DNS：固定IP
 
 * 作为代理
+
 ** 作为 HTTP 代理
 
+    固定IP:HTTP端口
 
 ** 作为 SOCKS 代理
+
+    固定IP:SOCKS端口
 
 * 访问配置界面
 在任何浏览器中打开：
