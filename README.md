@@ -143,10 +143,9 @@
 
 # 使用 Cron 自动更新和重启 Clash
 
-  执行 `crontab -e`，加入以下两行：
+  执行 `crontab -e`，加入以下两行（每天 3:45 更新配置，3:50 重启 Clash）：
     
     45 3 * * 1 /usr/bin/wget 你的配置链接 -O /opt/clash/config.yaml
-
     50 3 * * * /usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf restart clash 
 
 # Extra
