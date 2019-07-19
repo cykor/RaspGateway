@@ -13,7 +13,7 @@
 - [Extra](#extra)
   * [使用阿里镜像](#使用阿里镜像)
   * [关闭蓝牙和 Wi-Fi](#关闭蓝牙和-Wi-Fi)
-- [参考文献](#参考文献)
+- [感谢](#感谢)
 
 
 # 编译和准备 Clash
@@ -220,8 +220,7 @@ Clash 配置文件的前半部分修改如下：
     dtoverlay=pi3-disable-wifi
     dtoverlay=pi3-disable-bt
 
-# 参考文献
-  感谢！
+# 感谢
   
 * [clash](https://github.com/Dreamacro/clash)
 * [yacd](https://github.com/haishanh/yacd)
