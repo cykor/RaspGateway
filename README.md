@@ -1,10 +1,6 @@
 # RaspGateway
-  使用 Raspberry Pi 和 Clash 打造即插即用的透明网关/代理。
-  基于
+  使用 Raspberry Pi (Rapbian 10) 和 Clash (v0.15.0) 打造即插即用的透明网关/代理。
   
-  - Raspbian 10
-  - Clash v0.15.0
-
 - [编译和准备 Clash](#编译和准备-clash)
   * [准备配置文件](#准备配置文件)
   * [交叉编译 Clash](#交叉编译-clash)
