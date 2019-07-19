@@ -51,8 +51,25 @@
     netfilter-persistent save
 
 
-
 # 使用 Supervisor 监护 Clash 进程
+
+创建 `/etc/supervisor/conf.d/clash.conf`：
+
+    [supervisord]
+    nodaemon=false
+
+    [program:clash]
+    priority=1
+    directory=/opt/clash
+    command=/opt/clash/clash -d .
+    autorestart=true
+
+启动 Supervisor：
+
+    systemctl restart supervisor
+    systemctl enable supervisor
+
+
 
 # 使用 yacd 作为控制前端
 
