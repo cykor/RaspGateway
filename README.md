@@ -34,7 +34,7 @@
 编辑 `/etc/dhcpcd.conf`，固定 Raspberry Pi 的 IP：
 
     interface eth0
-    static ip_address=192.168.1.6/24
+    static ip_address=固定IP/24
     static routers=192.168.1.1
 
 打开转发：
@@ -72,45 +72,59 @@
 
 # 使用 yacd 作为控制前端
 
-apt -y install git build-essential
+安装 git 和 build 工具：
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - 
-apt install nodejs 
+    apt install git build-essential
 
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt update && sudo apt install yarn
+安装 nodejs：
 
-apt -y install nginx unzip
-mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - 
+    apt install nodejs 
 
-git clone https://github.com/haishanh/yacd.git
-cd yacd
+安装 yarn：
 
-nano src/ducks/app.js
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    apt update && sudo apt install yarn
 
-const defaultState = {
-  clashAPIConfig: {
-    hostname: '192.168.1.6’,
-    port: ‘9090’,
-    secret: ''
-  },
+安装 nginx：
 
-yarn
-yarn build
-cp -r public/. /usr/share/nginx/html/yacd
+    apt -y install nginx unzip
+    mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
 
-nano /etc/nginx/conf.d/yacd.conf
+下载 yacd：
 
-server {
-    listen       80;
-    server_name  192.168.1.6;
-    root /usr/share/nginx/html/yacd;
-    index index.html;
-}
+    git clone https://github.com/haishanh/yacd.git
+    cd yacd
 
-systemctl start nginx
-systemctl enable nginx
+可以编辑 `src/ducks/app.js`，把登录页面上缺省的服务器和端口改为你习惯的：
+
+    const defaultState = {
+      clashAPIConfig: {
+        hostname: '固定IP’,
+        port: ‘配置端口’,
+        secret: ''
+      },
+
+使用 yarn 编译安装：
+
+    yarn
+    yarn build
+    cp -r public/. /usr/share/nginx/html/yacd
+
+创建 `/etc/nginx/conf.d/yacd.conf`：
+
+    server {
+        listen       80;
+        server_name  固定IP;
+        root /usr/share/nginx/html/yacd;
+        index index.html;
+    }
+
+启动 nginx：
+
+    systemctl start nginx
+    systemctl enable nginx
 
 
 
@@ -118,7 +132,7 @@ systemctl enable nginx
 
   执行 `crontab -e`，加入以下两行：
     
-    45 3 * * 1 /usr/bin/wget [你的配置链接] -O /opt/clash/config.yaml
+    45 3 * * 1 /usr/bin/wget 你的配置链接 -O /opt/clash/config.yaml
 
     50 3 * * * /usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf restart clash 
 
