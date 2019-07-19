@@ -222,9 +222,12 @@ Clash 配置文件的前半部分修改如下：
 
 # 参考文献
   感谢！
-* clash
-* yacd
-* go-shadowsocks
+  
+* [clash](https://github.com/Dreamacro/clash)
+* [yacd](https://github.com/haishanh/yacd)
+* [go-shadowsocks2](https://github.com/riobard/go-shadowsocks2)
+* [V2Ray](https://github.com/v2ray/v2ray-core)
+
 * [使用Debian9自己打造一个旁路由](https://lala.im/5727.html)
 * [在树莓派上使用kone和clash](https://beyondkmp.com/post/kone_clash/)
 
