@@ -2,12 +2,14 @@
   使用 Raspberry Pi 和 Clash 打造即插即用的透明网关/代理
 
 - [编译和准备 Clash](#编译和准备-clash)
-  * [交叉编译](#交叉编译)
+  * [准备配置文件](#准备配置文件)
+  * [交叉编译 Clash](#交叉编译-clash)
   * [准备 Clash](#准备-clash)
 - [网络配置](#网络配置)
 - [使用 Supervisor 监护 Clash 进程](#使用-supervisor-监护-clash-进程)
 - [使用 yacd 作为控制前端](#使用-yacd-作为控制前端)
 - [使用 Cron 自动更新和重启 Clash](#使用-cron-自动更新和重启-clash)
+- [使用方法](#使用方法)
 - [Extra](#extra)
   * [使用阿里镜像](#使用阿里镜像)
   * [关闭蓝牙和 Wi-Fi](#关闭蓝牙和-Wi-Fi)
@@ -15,7 +17,10 @@
 
 
 # 编译和准备 Clash
-## 交叉编译
+## 准备配置文件
+
+
+## 交叉编译 Clash
 
   Mac 或 Linux 上可以：
   
@@ -148,6 +153,21 @@
     45 3 * * 1 /usr/bin/wget 你的配置链接 -O /opt/clash/config.yaml
     50 3 * * * /usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf restart clash 
 
+# 使用方法
+
+* 作为网关
+
+* 作为代理
+** 作为 HTTP 代理
+
+
+** 作为 SOCKS 代理
+
+* 访问配置界面
+在任何浏览器中打开：
+
+    http://固定IP
+
 # Extra
 
 ## 使用阿里镜像
@@ -167,7 +187,9 @@
 
 # 参考文献
   感谢！
-  
+* clash
+* yacd
+* go-shadowsocks
 * [使用Debian9自己打造一个旁路由](https://lala.im/5727.html)
 * [在树莓派上使用kone和clash](https://beyondkmp.com/post/kone_clash/)
 
