@@ -205,13 +205,17 @@ Clash 配置文件的前半部分修改如下：
 
 # Extra
 
-## 使用阿里镜像
-  在 `/etc/apt/sources.list` 中注释掉原有的 repo，加入阿里的镜像：
+## 使用清华镜像
+  在 `/etc/apt/sources.list` 中注释掉原有的 repo，加入：
   
-    deb https://mirrors.aliyun.com/raspbian/raspbian/ buster main contrib non-free rpi
+    deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
     # deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
 
-
+  在`/etc/apt/sources.list.d/raspi.list` 中注释掉原有的 repo，加入：
+  
+    deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+    # deb http://archive.raspberrypi.org/debian/ buster main ui
+  
 ## 关闭蓝牙和 Wi-Fi
   如果只作为一个网关运行，可以关闭蓝牙和 Wi-Fi，省电的同时纯净无线空间。
   
